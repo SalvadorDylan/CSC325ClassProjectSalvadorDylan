@@ -96,10 +96,7 @@ export default function Hero() {
               width: { sm: '100%', md: '80%' },
             }}
           >
-            You're on a mission to build exceptional tech teams—and I’m here to make it easier 
-            for you. As a passionate junior developer, I bring fresh ideas, problem-solving 
-            skills, automation, and a commitment to delivering results. Let’s work together to turn your 
-            challenges into opportunities, and ensure your team thrives.
+            Explore the innovative design of our website and consider relying on us for your next hire!
           </Typography>
           <Stack
             direction={{ xs: 'column', sm: 'row' }}
@@ -146,6 +143,7 @@ export default function Hero() {
             .
           </Typography>
         </Stack>
+        <StyledBox data-testid="hero-visual" />
       </Container>
     </Box>
   );
