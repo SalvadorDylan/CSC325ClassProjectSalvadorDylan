@@ -28,8 +28,6 @@ jobs:
 
       - name: Start up Node.js
         uses: actions/setup-node@v4
-        #working-directory: ./website
-        #run: npm install --package-lock-only
         with:
           cache-dependency-path: website/package-lock.json
           node-version: ${{ matrix.node-version }}
@@ -38,7 +36,9 @@ jobs:
 
       - name: Install deps
         working-directory: ./website
-        run: npm ci
+        run: |
+          npm install --package-lock-only
+          npm ci
 
       - name:  Run tests
         working-directory:  ./website
