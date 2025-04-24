@@ -29,7 +29,7 @@ jobs:
       - name: Start up Node.js
         uses: actions/setup-node@v4
         with:
-          entryPoint: ../website
+          cache-dependency-path: website/package-lock.json
           node-version: '20'
           cache: 'npm'
 
@@ -53,7 +53,7 @@ jobs:
       - name: Start up node.js
         uses: actions/setup-node@v4
         with:
-          entryPoint: ../website
+          cache-dependency-path: website/package-lock.json
           node-version:  '20'
 
       - name: Install 
