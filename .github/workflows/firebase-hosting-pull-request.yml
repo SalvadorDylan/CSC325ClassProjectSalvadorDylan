@@ -25,12 +25,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
       - name: Start up Node.js
         uses: actions/setup-node@v4
         with:
+          entryPoint: ../website
           node-version: '20'
           cache: 'npm'
-          entryPoint: ./website
 
       - name: Install deps
         working-directory: ./website
@@ -52,8 +53,8 @@ jobs:
       - name: Start up node.js
         uses: actions/setup-node@v4
         with:
+          entryPoint: ../website
           node-version:  '20'
-          entryPoint: ./website
 
       - name: Install 
         working-directory: ./website
