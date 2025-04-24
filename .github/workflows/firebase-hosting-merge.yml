@@ -20,7 +20,7 @@ jobs:
 
       - name: Install deps
         working-directory: ./website
-        run: npm install --package-lock-only
+        run: npm install
 
       - name: Build project
         working-directory: ./website
