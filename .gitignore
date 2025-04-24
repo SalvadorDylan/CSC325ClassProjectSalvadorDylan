@@ -8,3 +8,4 @@ styles
 
 # Keep these files
 !website/package.json
+#!website/package-lock.json
