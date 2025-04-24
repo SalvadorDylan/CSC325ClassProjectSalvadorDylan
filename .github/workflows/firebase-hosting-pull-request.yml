@@ -62,7 +62,7 @@ jobs:
       - name: Install 
         working-directory: ./website
         run: |
-          npm install
+          npm install --package-lock-only
           npm ci
 
       - name: Build
