@@ -9,58 +9,18 @@ permissions:
   pull-requests: write
 
 jobs:
-  validate-docs:
-    name: Vale doc validation
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Install vale
-        uses: errata-ai/vale-action@v2
-        with:
-          version: '2.28.0'
-          config: '.vale.ini'
-          files: '**/*.md'
-  run-tests: 
-    name: Jest testing
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Start up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-          cache: 'npm'
-
-      - name: Install deps
-        working-directory: ./website
-        run: npm ci
-
-      - name:  Run tests
-        working-directory:  ./website
-        run: npm test
-        env:
-          CI: true
-
   build_and_preview:
     needs: [validate-docs, run-tests]
     if: ${{ github.event.pull_request.head.repo.full_name == github.repository }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Start up node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version:  '20'
-
-      - name: Install 
         working-directory: ./website
-        run: npm ci
-
-      - name: Build
-        working-directory: ./website
-        run: npm run build
-
+        run: |
+          vale .
+          npm test
+          npm ci && npm run build
+          
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
