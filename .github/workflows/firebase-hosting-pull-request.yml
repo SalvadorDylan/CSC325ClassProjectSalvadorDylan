@@ -28,11 +28,12 @@ jobs:
 
       - name: Start up Node.js
         uses: actions/setup-node@v4
-        working-directory: ./website
-        run: npm install --package-lock-only
+        #working-directory: ./website
+        #run: npm install --package-lock-only
         with:
           cache-dependency-path: website/package-lock.json
-          node-version: '20'
+          node-version: ${{ matrix.node-version }}
+          #node-version: '20'
           cache: 'npm'
 
       - name: Install deps
